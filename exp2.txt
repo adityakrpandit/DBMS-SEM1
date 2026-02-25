@@ -1,0 +1,184 @@
+SQL> CREATE TABLE item_master (
+  2  id VARCHAR2(5),
+  3  name VARCHAR2(30),
+  4  type VARCHAR2(20),
+  5  price NUMBER(10),
+  6  quality VARCHAR2(10),
+  7  item_pack_date DATE
+  8  );
+
+Table created.
+
+SQL> INSERT INTO item_master VALUES('I1','DAIRYMILK','CHOCOLATE',500,'GOOD',TO_DATE('12-AUG-2000','DD-MON-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO item_master VALUES('I2','KAJUKATRI','MITHAI',1000,'VERYGOOD',TO_DATE('15-JAN-2016','DD-MON-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO item_master VALUES('I3','PIZZA','FASTFOOD',350,'AVERAGE',TO_DATE('20-FEB-2015','DD-MON-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO item_master VALUES('I4','ORANGEJUICE','JUICE',50,'BEST',TO_DATE('05-FEB-2016','DD-MON-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO item_master VALUES('I5','VANILLA_CACK','BAKERY ITEM',2000,'GOOD',TO_DATE('01-JAN-2016','DD-MON-YYYY'));
+
+1 row created.
+
+SQL> DESC item_master
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 VARCHAR2(5)
+ NAME                                               VARCHAR2(30)
+ TYPE                                               VARCHAR2(20)
+ PRICE                                              NUMBER(10)
+ QUALITY                                            VARCHAR2(10)
+ ITEM_PACK_DATE                                     DATE
+
+SQL> SELECT *FROM item_master;
+
+ID    NAME                           TYPE                      PRICE QUALITY    
+----- ------------------------------ -------------------- ---------- ---------- 
+ITEM_PACK                                                                       
+---------                                                                       
+I1    DAIRYMILK                      CHOCOLATE                   500 GOOD       
+12-AUG-00                                                                       
+                                                                                
+I2    KAJUKATRI                      MITHAI                     1000 VERYGOOD   
+15-JAN-16                                                                       
+                                                                                
+I3    PIZZA                          FASTFOOD                    350 AVERAGE    
+20-FEB-15                                                                       
+                                                                                
+
+ID    NAME                           TYPE                      PRICE QUALITY    
+----- ------------------------------ -------------------- ---------- ---------- 
+ITEM_PACK                                                                       
+---------                                                                       
+I4    ORANGEJUICE                    JUICE                        50 BEST       
+05-FEB-16                                                                       
+                                                                                
+I5    VANILLA_CACK                   BAKERY ITEM                2000 GOOD       
+01-JAN-16                                                                       
+                                                                                
+
+SQL> SET PAGESIZE 100
+SQL> SET LINESIZE 200
+SQL> SET WRAP OFF
+SQL> SET FEEDBACK ON
+SQL> SET HEADING ON
+SQL> SET ECHO ON
+SQL> COLUMN id FORMAT A5
+SQL> COLUMN name FORMAT A15
+SQL> COLUMN type FORMAT A15
+SQL> COLUMN quality FORMAT A10
+SQL> COLUMN item_pack_date FORMAT A12;
+SQL> SELECT *FROM item_master;
+
+ID    NAME            TYPE                 PRICE QUALITY    ITEM_PACK_DA                                                                                                                                
+----- --------------- --------------- ---------- ---------- ------------                                                                                                                                
+I1    DAIRYMILK       CHOCOLATE              500 GOOD       12-AUG-00                                                                                                                                   
+I2    KAJUKATRI       MITHAI                1000 VERYGOOD   15-JAN-16                                                                                                                                   
+I3    PIZZA           FASTFOOD               350 AVERAGE    20-FEB-15                                                                                                                                   
+I4    ORANGEJUICE     JUICE                   50 BEST       05-FEB-16                                                                                                                                   
+I5    VANILLA_CACK    BAKERY ITEM           2000 GOOD       01-JAN-16                                                                                                                                   
+
+5 rows selected.
+
+SQL> SELECT price, quality, item_pack_date
+  2  FROM item_master;
+
+     PRICE QUALITY    ITEM_PACK_DA                                                                                                                                                                      
+---------- ---------- ------------                                                                                                                                                                      
+       500 GOOD       12-AUG-00                                                                                                                                                                         
+      1000 VERYGOOD   15-JAN-16                                                                                                                                                                         
+       350 AVERAGE    20-FEB-15                                                                                                                                                                         
+        50 BEST       05-FEB-16                                                                                                                                                                         
+      2000 GOOD       01-JAN-16                                                                                                                                                                         
+
+5 rows selected.
+
+SQL> SELECT * FROM item_master
+  2  ORDER BY quality;
+
+ID    NAME            TYPE                 PRICE QUALITY    ITEM_PACK_DA                                                                                                                                
+----- --------------- --------------- ---------- ---------- ------------                                                                                                                                
+I3    PIZZA           FASTFOOD               350 AVERAGE    20-FEB-15                                                                                                                                   
+I4    ORANGEJUICE     JUICE                   50 BEST       05-FEB-16                                                                                                                                   
+I5    VANILLA_CACK    BAKERY ITEM           2000 GOOD       01-JAN-16                                                                                                                                   
+I1    DAIRYMILK       CHOCOLATE              500 GOOD       12-AUG-00                                                                                                                                   
+I2    KAJUKATRI       MITHAI                1000 VERYGOOD   15-JAN-16                                                                                                                                   
+
+5 rows selected.
+
+SQL> SELECT DISTINCT quality
+  2  FROM item_master;
+
+QUALITY                                                                                                                                                                                                 
+----------                                                                                                                                                                                              
+GOOD                                                                                                                                                                                                    
+VERYGOOD                                                                                                                                                                                                
+AVERAGE                                                                                                                                                                                                 
+BEST                                                                                                                                                                                                    
+
+4 rows selected.
+
+SQL> UPDATE item_master
+  2  SET quality = 'VERYGOOD'
+  3  WHERE quality = 'GOOD';
+
+2 rows updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> ALTER TABLE item_master
+  2  ADD item_pur_date DATE;
+
+Table altered.
+
+SQL> SELECT * FROM item_master
+  2  WHERE price > 500;
+
+ID    NAME            TYPE                 PRICE QUALITY    ITEM_PACK_DA ITEM_PUR_                                                                                                                      
+----- --------------- --------------- ---------- ---------- ------------ ---------                                                                                                                      
+I2    KAJUKATRI       MITHAI                1000 VERYGOOD   15-JAN-16                                                                                                                                   
+I5    VANILLA_CACK    BAKERY ITEM           2000 verygood   01-JAN-16                                                                                                                                   
+
+2 rows selected.
+
+SQL> DELETE FROM item_master
+  2  WHERE price = 50;
+
+1 row deleted.
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> RENAME item_master TO item_detail;
+
+Table renamed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select *from item_detail;
+
+ID    NAME            TYPE                 PRICE QUALITY    ITEM_PACK_DA ITEM_PUR_                                                                                                                      
+----- --------------- --------------- ---------- ---------- ------------ ---------                                                                                                                      
+I1    DAIRYMILK       CHOCOLATE              500 verygood   12-AUG-00                                                                                                                                   
+I2    KAJUKATRI       MITHAI                1000 VERYGOOD   15-JAN-16                                                                                                                                   
+I3    PIZZA           FASTFOOD               350 AVERAGE    20-FEB-15                                                                                                                                   
+I5    VANILLA_CACK    BAKERY ITEM           2000 verygood   01-JAN-16                                                                                                                                   
+
+4 rows selected.
+
+SQL> spool off;
