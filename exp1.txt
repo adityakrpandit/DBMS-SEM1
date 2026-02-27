@@ -31,10 +31,6 @@ SQL> CREATE TABLE BORROW (
 
 Table created.
 
-SQL> SELECT *FROM DEPOSIT;
-
-no rows selected
-
 SQL> DESC DEPOSIT;
  Name                                      Null?    Type
  ----------------------------------------- -------- ----------------------------
@@ -292,13 +288,6 @@ KRANTI
 MINU                                                                            
 
 SQL> SELECT CNAME
-  2  FROM DEPOSIT
-  3  WHERE ADATE > TO_DATE('01-DEC-1996','DD-MON-YYYY');
-
-no rows selected
-
-
-SQL> SELECT CNAME
   2  FROM CUSTOMERS
   3  WHERE CITY = 'BOMBAY';
 
@@ -313,3 +302,4 @@ SQL> COMMIT;
 Commit complete.
 
 SQL> SPOOL OFF;
+
