@@ -39,44 +39,9 @@ SQL> DESC item_master
  QUALITY                                            VARCHAR2(10)
  ITEM_PACK_DATE                                     DATE
 
-SQL> SELECT *FROM item_master;
-
-ID    NAME                           TYPE                      PRICE QUALITY    
------ ------------------------------ -------------------- ---------- ---------- 
-ITEM_PACK                                                                       
----------                                                                       
-I1    DAIRYMILK                      CHOCOLATE                   500 GOOD       
-12-AUG-00                                                                       
-                                                                                
-I2    KAJUKATRI                      MITHAI                     1000 VERYGOOD   
-15-JAN-16                                                                       
-                                                                                
-I3    PIZZA                          FASTFOOD                    350 AVERAGE    
-20-FEB-15                                                                       
-                                                                                
-
-ID    NAME                           TYPE                      PRICE QUALITY    
------ ------------------------------ -------------------- ---------- ---------- 
-ITEM_PACK                                                                       
----------                                                                       
-I4    ORANGEJUICE                    JUICE                        50 BEST       
-05-FEB-16                                                                       
-                                                                                
-I5    VANILLA_CACK                   BAKERY ITEM                2000 GOOD       
-01-JAN-16                                                                       
-                                                                                
-
 SQL> SET PAGESIZE 100
 SQL> SET LINESIZE 200
 SQL> SET WRAP OFF
-SQL> SET FEEDBACK ON
-SQL> SET HEADING ON
-SQL> SET ECHO ON
-SQL> COLUMN id FORMAT A5
-SQL> COLUMN name FORMAT A15
-SQL> COLUMN type FORMAT A15
-SQL> COLUMN quality FORMAT A10
-SQL> COLUMN item_pack_date FORMAT A12;
 SQL> SELECT *FROM item_master;
 
 ID    NAME            TYPE                 PRICE QUALITY    ITEM_PACK_DA                                                                                                                                
@@ -182,3 +147,4 @@ I5    VANILLA_CACK    BAKERY ITEM           2000 verygood   01-JAN-16
 4 rows selected.
 
 SQL> spool off;
+
