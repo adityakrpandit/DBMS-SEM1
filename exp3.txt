@@ -1,0 +1,158 @@
+SQL> CREATE TABLE Cust_master1 (
+  2      Cust_no VARCHAR2(5),
+  3      Cust_name VARCHAR2(20),
+  4      Address1 VARCHAR2(30),
+  5      Address2 VARCHAR2(30),
+  6      City VARCHAR2(20),
+  7      State VARCHAR2(20),
+  8      Ph_no NUMBER(10)
+  9  );
+
+Table created.
+
+SQL> INSERT INTO Cust_master1 VALUES
+  2  ('C1','Priya','RingRoad','Puja Park','Ahmedabad','Gujarat',8989878548);
+
+1 row created.
+
+SQL> INSERT INTO Cust_master1 VALUES
+  2  ('C2','Puja','Lajpat Nager','Shyamal colony','Banaras','UP',7898456213);
+
+1 row created.
+
+SQL> INSERT INTO Cust_master1 VALUES
+  2  ('C3','Ankit','Borivali','Panchayat nager','Mumbai','Maharashtra',7885984251);
+
+1 row created.
+
+SQL> INSERT INTO Cust_master1 VALUES
+  2  ('C4','Ravi','VajdiRoad','Nandbhoomi colony','Delhi','Delhi',7898452034);
+
+1 row created.
+
+SQL> INSERT INTO Cust_master1 VALUES
+  2  ('C5','Alpa','Jamanagar Road','Railway colony','Ahmedabad','Gujarat',7465241589);
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT *FROM Cust_master1;
+
+CUST_ CUST_NAME            ADDRESS1                       ADDRESS2                       CITY                 STATE                     PH_NO                                                           
+----- -------------------- ------------------------------ ------------------------------ -------------------- -------------------- ----------                                                           
+C1    Priya                RingRoad                       Puja Park                      Ahmedabad            Gujarat              8989878548                                                           
+C2    Puja                 Lajpat Nager                   Shyamal colony                 Banaras              UP                   7898456213                                                           
+C3    Ankit                Borivali                       Panchayat nager                Mumbai               Maharashtra          7885984251                                                           
+C4    Ravi                 VajdiRoad                      Nandbhoomi colony              Delhi                Delhi                7898452034                                                           
+C5    Alpa                 Jamanagar Road                 Railway colony                 Ahmedabad            Gujarat              7465241589                                                           
+
+5 rows selected.
+
+SQL> SELECT *FROM Cust_master1
+  2  WHERE STATE = 'Gujarat';
+
+CUST_ CUST_NAME            ADDRESS1                       ADDRESS2                       CITY                 STATE                      PH_NO                                                          
+----- -------------------- ------------------------------ ------------------------------ -------------------- -------------------- -----------                                                          
+C1    Priya                RingRoad                       Puja Park                      Ahmedabad            Gujarat               8989878548                                                          
+C5    Alpa                 Jamanagar Road                 Railway colony                 Ahmedabad            Gujarat               7465241589                                                          
+
+2 rows selected.
+
+SQL> SELECT *FROM Cust_master1
+  2  ORDER BY Cust_name;
+
+CUST_ CUST_NAME            ADDRESS1                       ADDRESS2                       CITY                 STATE                      PH_NO                                                          
+----- -------------------- ------------------------------ ------------------------------ -------------------- -------------------- -----------                                                          
+C5    Alpa                 Jamanagar Road                 Railway colony                 Ahmedabad            Gujarat               7465241589                                                          
+C3    Ankit                Borivali                       Panchayat nager                Mumbai               Maharashtra           7885984251                                                          
+C1    Priya                RingRoad                       Puja Park                      Ahmedabad            Gujarat               8989878548                                                          
+C2    Puja                 Lajpat Nager                   Shyamal colony                 Banaras              UP                    7898456213                                                          
+C4    Ravi                 VajdiRoad                      Nandbhoomi colony              Delhi                Delhi                 7898452034                                                          
+
+5 rows selected.
+
+SQL> SELECT DISTINCT City
+  2  FROM Cust_master1;
+
+CITY                                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+Banaras                                                                                                                                                                                                 
+Ahmedabad                                                                                                                                                                                               
+Delhi                                                                                                                                                                                                   
+Mumbai                                                                                                                                                                                                  
+
+4 rows selected.
+
+SQL> UPDATE Cust_master1
+  2  SET Address1 = 'Cg Road'
+  3  WHERE Cust_name = 'Priya';
+
+1 row updated.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT *FROM Cust_master1
+  2  WHERE Cust_name = 'Priya';
+
+CUST_ CUST_NAME            ADDRESS1                       ADDRESS2                       CITY                 STATE                      PH_NO                                                          
+----- -------------------- ------------------------------ ------------------------------ -------------------- -------------------- -----------                                                          
+C1    Priya                Cg Road                        Puja Park                      Ahmedabad            Gujarat               8989878548                                                          
+
+1 row selected.
+
+SQL> SELECT City
+  2  FROM Cust_master1
+  3  WHERE STATE = 'Gujarat';
+
+CITY                                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+Ahmedabad                                                                                                                                                                                               
+Ahmedabad                                                                                                                                                                                               
+
+2 rows selected.
+
+SQL> ALTER TABLE Cust_master1
+  2  ADD pin_code NUMBER(6);
+
+Table altered.
+
+SQL> ALTER TABLE Cust_master1
+  2  DROP COLUMN pin_code;
+
+Table altered.
+
+SQL> DELETE FROM Cust_master1
+  2  WHERE Ph_no = 7898452034;
+
+1 row deleted.
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> RENAME Cust_master1 TO customer_detail1;
+
+Table renamed.
+
+SQL> SELECT * FROM customer_detail1;
+
+CUST_ CUST_NAME            ADDRESS1                       ADDRESS2                       CITY                 STATE                      PH_NO                                                          
+----- -------------------- ------------------------------ ------------------------------ -------------------- -------------------- -----------                                                          
+C1    Priya                Cg Road                        Puja Park                      Ahmedabad            Gujarat               8989878548                                                          
+C2    Puja                 Lajpat Nager                   Shyamal colony                 Banaras              UP                    7898456213                                                          
+C3    Ankit                Borivali                       Panchayat nager                Mumbai               Maharashtra           7885984251                                                          
+C5    Alpa                 Jamanagar Road                 Railway colony                 Ahmedabad            Gujarat               7465241589                                                          
+
+4 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
