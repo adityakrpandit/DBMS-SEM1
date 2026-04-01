@@ -149,10 +149,6 @@ SQL> INSERT INTO DEPOSIT2 VALUES
 
 1 row created.
 
-SQL> COMMIT;
-
-Commit complete.
-
 SQL> SELECT * FROM DEPOSIT2;
 
       A_NO CNAME                BNAME                    AMOUNT ADATE           
@@ -162,6 +158,10 @@ SQL> SELECT * FROM DEPOSIT2;
        203 Sunil                Dadar                      3000 10-MAR-06       
        204 Ravi                 Andheri                    9000 20-JUL-06       
        205 Ajay                 Bandra                    10000 25-JUL-06       
+
+SQL> COMMIT;
+
+Commit complete.
 
 SQL> SELECT * FROM JOB1;
 
