@@ -1,0 +1,185 @@
+SQL> SELECT * FROM DEPOSITIP;
+
+     ACTNO CNAME                BNAME                    AMOUNT ADATE                                                                                                                                   
+---------- -------------------- -------------------- ---------- ---------                                                                                                                               
+       100 ANIL                 VRCE                       1000 01-MAR-95                                                                                                                               
+       101 SUNIL                AJNI                       5000 04-JAN-96                                                                                                                               
+       102 MEHUL                KAROLBAGH                  3500 17-NOV-95                                                                                                                               
+       104 MADHURI              CHANDI                     1200 17-DEC-95                                                                                                                               
+       105 PRMOD                M G ROAD                   3000 27-MAR-96                                                                                                                               
+       106 SANDIP               ANDHERI                    2000 31-MAR-96                                                                                                                               
+       107 SHIVANI              VIRAR                      1000 05-SEP-95                                                                                                                               
+       108 KRANTI               NEHRU PLACE                5000 02-JUL-95                                                                                                                               
+       109 MINU                 POWAI                      7000 10-AUG-95                                                                                                                               
+
+9 rows selected.
+
+SQL> SELECT ACTNO, AMOUNT FROM DEPOSITIP;
+
+     ACTNO     AMOUNT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+       100       1000                                                                                                                                                                                   
+       101       5000                                                                                                                                                                                   
+       102       3500                                                                                                                                                                                   
+       104       1200                                                                                                                                                                                   
+       105       3000                                                                                                                                                                                   
+       106       2000                                                                                                                                                                                   
+       107       1000                                                                                                                                                                                   
+       108       5000                                                                                                                                                                                   
+       109       7000                                                                                                                                                                                   
+
+9 rows selected.
+
+SQL> SELECT CNAME FROM CUSTOMERSIP
+  2  WHERE CITY = 'BOMBAY';
+
+CNAME                                                                                                                                                                                                   
+--------------------                                                                                                                                                                                    
+SHIVANI                                                                                                                                                                                                 
+KRANTI                                                                                                                                                                                                  
+NAREN                                                                                                                                                                                                   
+
+SQL> SELECT * FROM ITEM_MASTERIP
+  2  WHERE PRICE > 500;
+
+ID    NAME                 TYPE                      PRICE QUALITY              ITEM_PACK                                                                                                               
+----- -------------------- -------------------- ---------- -------------------- ---------                                                                                                               
+I2    Kajukatri            Mithai                     1000 Verygood             15-JAN-16                                                                                                               
+I5    Vanilla_cake         Bakery                     2000 Verygood             01-JAN-16                                                                                                               
+
+SQL> SELECT DISTINCT CITY FROM CUST_MASTERIP;
+
+CITY                                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+Banaras                                                                                                                                                                                                 
+Ahmedabad                                                                                                                                                                                               
+Mumbai                                                                                                                                                                                                  
+
+SQL> SELECT CNAME FROM DEPOSITIP
+  2  WHERE AMOUNT > 4000;
+
+CNAME                                                                                                                                                                                                   
+--------------------                                                                                                                                                                                    
+SUNIL                                                                                                                                                                                                   
+KRANTI                                                                                                                                                                                                  
+MINU                                                                                                                                                                                                    
+
+SQL> SELECT * FROM EMPLOYEEIP
+  2  WHERE EMP_NAME LIKE 'A%';
+
+    EMP_NO EMP_NAME                EMP_SAL   EMP_COMM    DEPT_NO                                                                                                                                        
+---------- -------------------- ---------- ---------- ----------                                                                                                                                        
+       103 Adama                      1100          0         20                                                                                                                                        
+       104 Aman                       3000                    15                                                                                                                                        
+       105 Anita                      5000       5000         10                                                                                                                                        
+       107 Anamika                    2975                    30                                                                                                                                        
+
+SQL> SELECT EMP_NAME AS NAME, EMP_SAL
+  2  FROM EMPLOYEEIP
+  3  WHERE DEPT_NO = 20;
+
+NAME                    EMP_SAL                                                                                                                                                                         
+-------------------- ----------                                                                                                                                                                         
+Smith                       800                                                                                                                                                                         
+Adama                      1100                                                                                                                                                                         
+
+SQL> SELECT * FROM JOBIP
+  2  WHERE MIN_SAL > 4000;
+
+JOB_ID     JOB_NAME                          MIN_SAL    MAX_SAL                                                                                                                                         
+---------- ------------------------------ ---------- ----------                                                                                                                                         
+MK_MGR     Marketing Manager                    9000      15000                                                                                                                                         
+FI_MGR     Finance Manager                      8200      12000                                                                                                                                         
+FI_ACC     Account                              4200       9000                                                                                                                                         
+LEC        Lecturer                             6000      17000                                                                                                                                         
+
+SQL> SELECT A_NO, AMOUNT FROM DEPOSIT6IP
+  2  WHERE DATE1 BETWEEN '01-JAN-06' AND '25-JUL-06';
+
+      A_NO     AMOUNT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+       101       7000                                                                                                                                                                                   
+       102       5000                                                                                                                                                                                   
+       103       6500                                                                                                                                                                                   
+
+SQL> UPDATE ITEM_MASTERIP
+  2  SET QUALITY = 'Verygood'
+  3  WHERE QUALITY = 'Good';
+
+0 rows updated.
+
+SQL> 
+SQL> DELETE FROM ITEM_MASTERIP
+  2  WHERE PRICE = 50;
+
+0 rows deleted.
+
+SQL> UPDATE CUST_MASTERIP
+  2  SET ADDRESS1 = 'CG Road'
+  3  WHERE CUST_NAME = 'Priya';
+
+1 row updated.
+
+SQL> 
+SQL> DELETE FROM CUST_MASTERIP
+  2  WHERE PH_NO = '7898452034';
+
+0 rows deleted.
+
+SQL> UPDATE PERSONIP
+  2  SET CITY = 'Kolkata'
+  3  WHERE FNAME = 'Sandip';
+
+1 row updated.
+
+SQL> 
+SQL> SELECT * FROM PERSONIP
+  2  WHERE SALARY > 6000;
+
+ PERSON_ID FNAME                LNAME                CITY                     SALARY                                                                                                                    
+---------- -------------------- -------------------- -------------------- ----------                                                                                                                    
+         1 Sneha                Sheth                Rajkot                    10000                                                                                                                    
+         3 Riya                 Gajar                Pune                       8000                                                                                                                    
+         5 Alpesh               Prajapati            Mumbai                    20000                                                                                                                    
+
+SQL> SELECT * FROM BANK_BRANCHIP
+  2  ORDER BY BRANCH_NAME;
+
+BRANCH_ID  BRANCH_NAME          BRANCH_ADDRESS                 BRANCH_CITY          BRANCH_STATE         BRANCH_OP                                                                                      
+---------- -------------------- ------------------------------ -------------------- -------------------- ---------                                                                                      
+B001       BOI                  JagnathRoad                    Rajkot               Gujarat              22-MAR-15                                                                                      
+B004       DenaBank             CGRoad                         Ahmedabad            Gujarat              20-SEP-12                                                                                      
+B003       HDFC                 AgraRoad                       Agra                 UP                   04-FEB-98                                                                                      
+B005       ICICI                MajavdiRoad                    Junagadh             Gujarat              07-MAY-11                                                                                      
+B002       SBI                  Boriwali Road                  Mumbai               Maharashtra          12-JAN-00                                                                                      
+
+SQL> 
+SQL> SELECT BRANCH_NAME, BRANCH_ADDRESS, BRANCH_CITY
+  2  FROM BANK_BRANCHIP;
+
+BRANCH_NAME          BRANCH_ADDRESS                 BRANCH_CITY                                                                                                                                         
+-------------------- ------------------------------ --------------------                                                                                                                                
+BOI                  JagnathRoad                    Rajkot                                                                                                                                              
+SBI                  Boriwali Road                  Mumbai                                                                                                                                              
+HDFC                 AgraRoad                       Agra                                                                                                                                                
+DenaBank             CGRoad                         Ahmedabad                                                                                                                                           
+ICICI                MajavdiRoad                    Junagadh                                                                                                                                            
+
+SQL> SELECT SUM(AMOUNT) FROM DEPOSITIP;
+
+SUM(AMOUNT)                                                                                                                                                                                             
+-----------                                                                                                                                                                                             
+      28700                                                                                                                                                                                             
+
+SQL> 
+SQL> SELECT COUNT(*) FROM CUSTOMERSIP;
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
