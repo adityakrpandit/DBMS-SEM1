@@ -259,6 +259,14 @@ SQL> SELECT * FROM EMPLOYEE2
 
 no rows selected
 
+SQL> SELECT EMP_NAME, EMP_NO, EMP_SAL
+  2  FROM EMPLOYEE2
+  3  WHERE EMP_NAME LIKE 'Ani__';
+
+     EMP_NO EMP_NAME             EMP_SAL
+----------- ------------------ ----------------------------------
+       105  Anita                   5000
+
 SQL> SELECT cname
   2  FROM DEPOSIT2
   3  ORDER BY cname;
